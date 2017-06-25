@@ -1,4 +1,4 @@
-@import "_global";
+@import "_vars";
 
 body, html {
   padding: 0;
@@ -10,6 +10,11 @@ body {
   padding: 30px;
 }
 
+*, input {
+  font-family: verdana;
+  font-size: 14px;
+}
+
 .browser {
   display: block;
   position: relative;
@@ -19,3 +24,4 @@ body {
   left: 50%;
   border: 1px solid #ddd;
 }
+

@@ -2,12 +2,14 @@ const fs = require('fs');
 const sass = require('node-sass');
 
 const files = {
-    'template/browser.scss': ['template/browser.css', 'src/browser.css'],
-    'template/index.scss': ['template/index.css', 'src/index.css'],
-    'template/search.scss': ['template/search.css', 'src/search.css'],
-    'template/content.scss': ['template/content.css', 'src/content.css'],
-    'template/font.scss': ['template/font.css', 'src/font.css'],
-    'template/autocomplete.scss': ['template/autocomplete.css', 'src/autocomplete.css'],
+    'template/browser.scss': ['template/browser.css', 'src/styles/browser.css', 'public/browser.css'],
+    'template/index.scss': ['template/index.css', 'src/styles/index.css'],
+    'template/search.scss': ['template/search.css', 'src/styles/search.css'],
+    'template/content.scss': ['template/content.css', 'src/styles/content.css'],
+    'template/font.scss': ['template/font.css', 'src/styles/font.css'],
+    'template/autocomplete.scss': ['template/autocomplete.css', 'src/styles/autocomplete.css'],
+    'template/app.scss': ['template/app.css', 'src/styles/app.css'],
+    'template/_global.scss': ['template/_global.css', 'src/styles/_global.css'],
 };
 
 function writeCSS(targetFile, data) {
