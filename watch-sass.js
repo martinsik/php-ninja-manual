@@ -2,29 +2,48 @@ const fs = require('fs');
 const sass = require('node-sass');
 
 const files = {
-    'template/browser.scss': 'src/browser.css'
+    'template/browser.scss': ['template/browser.css', 'src/browser.css'],
+    'template/index.scss': ['template/index.css', 'src/index.css'],
+    'template/search.scss': ['template/search.css', 'src/search.css'],
+    'template/content.scss': ['template/content.css', 'src/content.css'],
+    'template/font.scss': ['template/font.css', 'src/font.css'],
+    'template/autocomplete.scss': ['template/autocomplete.css', 'src/autocomplete.css'],
 };
 
+function writeCSS(targetFile, data) {
+    fs.writeFile(targetFile, data, err => {
+        if (err) {
+            console.error('Unable to write compiled CSS to %s file', targetFile);
+        } else {
+            console.log('File %s saved', targetFile);
+        }
+    });
+}
+
+function renderCSS(file, targetFiles) {
+    sass.render({
+        'file': file,
+    }, (err, result) => {
+        if (err) {
+            console.error('Unable to compile source file', file);
+            return;
+        }
+
+        if (Array.isArray(targetFiles)) {
+            targetFiles.forEach(f => writeCSS(f, result.css));
+        } else {
+            writeCSS(targetFiles, result.css);
+        }
+    });
+}
+
 for (const file in files) {
-    const targetFile = files[file];
+    const targetFiles = files[file];
 
-    fs.watchFile(file, { interval: 1000 }, (curr, prev) => {
-        sass.render({
-            file: file,
-        }, (err, result) => {
-            if (err) {
-                console.error('Unable to compile source file', file);
-                return;
-            }
+    renderCSS(file, targetFiles);
 
-            fs.writeFile(targetFile, result.css, err => {
-                if (err) {
-                    console.error('Unable to write compiled CSS to %s file', targetFile);
-                } else {
-                    console.log('File %s saved', targetFile);
-                }
-            });
-        });
+    fs.watchFile(file, { interval: 500 }, (curr, prev) => {
+        renderCSS(file, targetFiles);
     });
 }
 

@@ -1,0 +1,18 @@
+@import '_global';
+
+.app {
+  background: white;
+  padding: 15px;
+}
+
+*, input {
+  font-family: verdana;
+  font-size: 14px;
+}
+
+a {
+  color: $link-color;
+  &:hover {
+    text-decoration: none;
+  }
+}
