@@ -7,8 +7,14 @@
     "@types/node": "^8.0.2",
     "@types/react": "^15.0.31",
     "@types/react-dom": "^15.5.1",
+    "@types/react-redux": "^4.4.45",
+    "@types/redux": "^3.6.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.0",
+    "redux-observable": "^0.14.1",
+    "rxjs": "^5.4.1"
   },
   "devDependencies": {
     "node-sass": "^4.5.3",
