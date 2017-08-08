@@ -6,9 +6,9 @@ export interface ChangeLanguage extends Action {
   language: string;
 }
 
-export function changeLanguage(language: string) {
+export function changeLanguage(language: string): ChangeLanguage {
   return {
     type: CHANGE_LANGUAGE,
     language,
-  } as ChangeLanguage;
+  };
 }

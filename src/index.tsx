@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
 import './rxjs';
-import App from './App';
+import { App } from './App';
 import store from './createStore';
 import { changeLanguage } from './actions/changeLanguage';
 

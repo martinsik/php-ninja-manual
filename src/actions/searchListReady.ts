@@ -6,9 +6,9 @@ export interface SearchListReady extends Action {
   list: string[];
 }
 
-export function searchListReady(list: string[]) {
+export function searchListReady(list: string[]): SearchListReady {
   return {
     type: SEARCH_LIST_READY,
     list,
-  } as SearchListReady;
+  };
 }
