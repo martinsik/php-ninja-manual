@@ -1,0 +1,31 @@
+.autocomplete {
+  position: absolute;
+  //top: 0;
+  left: 0;
+  padding: 0;
+  list-style: none;
+  background: white;
+  margin: 0;
+  margin-top: 5px;
+
+  border: 1px solid #ddd;
+  border-top: none;
+  box-sizing: border-box;
+
+  max-height: 190px;
+  overflow-y: auto;
+
+  li {
+    font-size: 0.9rem;
+
+    a {
+      padding: 4px 7px;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        background: #eeeeee;
+      }
+    }
+  }
+}

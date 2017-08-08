@@ -1,0 +1,50 @@
+@import "_vars";
+
+.search {
+  height: 40px;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+
+  label, input {
+    font-size: 1.1rem;
+  }
+
+  div:nth-of-type(1) {
+    float: left;
+    min-width: 75px;
+    width: 25%;
+    text-align: right;
+    position: relative;
+    padding-right: 10px;
+    
+    label {
+      display: block;
+      position: relative;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+  div:nth-of-type(2) {
+    position: relative;
+    flex-basis: auto;
+    flex-grow: 1;
+
+    input, .autocomplete {
+      width: 100%;
+      @media screen and (min-width: $bp-medium) {
+        width: 90%;
+      }
+    }
+
+    input {
+      box-sizing: border-box;
+      display: block;
+      position: relative;
+      transform: translateY(-50%);
+      top: 50%;
+      padding: 5px;
+      border: 1px solid #ddd;
+    }
+  }
+}

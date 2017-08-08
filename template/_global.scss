@@ -1,0 +1,8 @@
+@import "_vars";
+
+a {
+  color: $link-color;
+  &:hover {
+    text-decoration: none;
+  }
+}
