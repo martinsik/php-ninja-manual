@@ -1,10 +1,19 @@
 import { ActionsObservable } from 'redux-observable';
 import { Observable } from 'rxjs/Observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
-import { CHANGE_LANGUAGE, ChangeLanguage } from '../actions/changeLanguage';
-import { searchListReady, SearchListReady } from '../actions/searchListReady';
+import { Detail } from '../types/Detail';
+import { CHANGE_LANGUAGE, ChangeLanguageAction } from '../actions/changeLanguage';
+import { searchListReady, SearchListReadyAction } from '../actions/searchListReady';
+import { listDetailsLoaded, ListDetailsLoadedAction } from '../actions/listDetailsLoaded';
 
-export default (action$: ActionsObservable<ChangeLanguage>): Observable<SearchListReady> =>
+type ReturnActions = SearchListReadyAction | ListDetailsLoadedAction;
+
+export default (action$: ActionsObservable<ChangeLanguageAction>): Observable<ReturnActions> =>
   action$.ofType(CHANGE_LANGUAGE)
-    .mergeMap(action => ajax.getJSON(`json/${action.language}_php_net.list.json`))
-    .map((responseList: string[]) => searchListReady(responseList));
+    .mergeMap(action => Observable.merge(
+      ajax.getJSON(`json/${action.language}_php_net.list.json`)
+        .map((list: string[]) => searchListReady(list)),
+
+      ajax.getJSON(`json/${action.language}_php_net.json`)
+        .map((details: { [key: string]: Detail }) => listDetailsLoaded(details)),
+    ));

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { AppState } from '../../App';
+import { AppState } from '../../types/AppState';
 import { changeSearchTerm } from '../../actions/changeSearchTerm';
-import { changeAutocompleteVisible } from '../../actions/changeAutocompleteVisible';
+import { scheduleChangeAutocompleteVisible } from '../../actions/scheduleChangeAutocompleteVisible';
 import { Search, SearchDispatchProps, SearchStateProps } from './Search';
 
 const mapStateToProps = (state: AppState): SearchStateProps => {
@@ -16,13 +16,11 @@ const mapStateToProps = (state: AppState): SearchStateProps => {
 const mapDispatchToProps = (dispatch): SearchDispatchProps => {
   return {
     onChangeSearchTerm: (term: string) => dispatch(changeSearchTerm(term)),
-    changeAutocompleteVisible: (visible: boolean) => dispatch(changeAutocompleteVisible(visible)),
+    changeAutocompleteVisible: (visible: boolean) => dispatch(scheduleChangeAutocompleteVisible(visible)),
   };
 };
 
-const InteractiveSearch = connect(
+export const ContainerSearch = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Search);
-
-export default InteractiveSearch;

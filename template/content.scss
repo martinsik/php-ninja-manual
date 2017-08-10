@@ -1,12 +1,13 @@
 .content {
   .synopsis {
-
-    &, & > span {
-      font-family: Inconsolata;
-      font-size: 1.1rem;
-    }
+    margin-top: 15px;
 
     span {
+      &, & > span {
+        font-family: Inconsolata;
+        font-size: 1.1rem;
+      }
+
       &.name {
         color: #2d7eb9;
         font-size: 1.2rem;
@@ -14,18 +15,34 @@
       &.return-value {
         color: #1b9e1b;
       }
-      &.var-name {
-        color: #22899e;
-      }
-      &.optional {
-        color: #bababa;
-      }
-
     }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin:0 ;
+      display: inline-block;
+
+      li {
+        display: inline-block;
+        span {
+          &.var-name {
+            color: #22899e;
+          }
+          &.optional {
+            color: #bababa;
+          }
+        }
+
+        i {
+          font-style: normal;
+        }
+      }
+    }
+
   }
 
   .description {
-
   }
 
   .parameters {
@@ -37,6 +54,11 @@
       border: 1px solid #abd4f1;
       background: #eff9ff;
       border-bottom: none;
+
+      &:hover {
+        background: #e4edff;
+        cursor: pointer;
+      }
 
       &:first-child {
         border-top-left-radius: 3px;
@@ -52,7 +74,7 @@
       p {
         overflow-y: hidden;
         max-height: 0;
-        transition: max-height 0.15s linear, padding-top 0.15s linear;
+        transition: max-height 0.15s linear, padding-top 0.2s linear;
         padding-top: 0;
         margin: 0;
         font-size: 13px;
@@ -60,7 +82,7 @@
 
       &.expanded {
         p {
-          max-height: 300px;
+          max-height: 100px;
           padding-top: 5px;
         }
       }

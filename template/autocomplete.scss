@@ -1,6 +1,7 @@
+@import "_vars";
+
 .autocomplete {
   position: absolute;
-  //top: 0;
   left: 0;
   padding: 0;
   list-style: none;
@@ -22,6 +23,7 @@
       padding: 4px 7px;
       display: block;
       text-decoration: none;
+      color: $link-color;
 
       &:hover {
         background: #eeeeee;

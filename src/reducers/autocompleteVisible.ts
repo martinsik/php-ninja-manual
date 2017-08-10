@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { AutocompleteVisibleChangeAction, CHANGE_AUTOCOMPLETE_VISIBLE } from '../actions/changeAutocompleteVisible';
 import { ChangeSearchTermAction, CHANGE_SEARCH_TERM } from '../actions/changeSearchTerm';
-import { AppState } from '../App';
+import { AppState } from '../types/AppState';
 
 export default (state: AppState, action: Action) => {
   if ([CHANGE_AUTOCOMPLETE_VISIBLE, CHANGE_SEARCH_TERM].indexOf(action.type) === -1) {

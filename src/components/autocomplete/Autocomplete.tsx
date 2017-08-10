@@ -1,18 +1,24 @@
 import * as React from 'react';
 import '../../styles/autocomplete.css';
 
-type AutocompleteProps = {
-  terms: string[]
+export type AutocompleteStateProps = {
+  terms: string[],
 };
 
-const Autocomplete = (props: AutocompleteProps) => {
+export type AutocompleteDispatchProps = {
+  onClick: (term: string, e: React.MouseEvent<HTMLAnchorElement>) => void,
+};
+
+type AutocompleteProps = AutocompleteStateProps & AutocompleteDispatchProps;
+
+export const Autocomplete = (props: AutocompleteProps) => {
   return (
     <ul className="autocomplete">
-      {props.terms.map((term: string, index: number) => (
-        <li key={index}><a href="">{term}</a></li>
+      {props.terms.map((term: string, i: number) => (
+        <li key={i}>
+          <a href="#" onClick={e => props.onClick(term, e)}>{term}</a>
+        </li>
       ))}
     </ul>
   );
 };
-
-export default Autocomplete;

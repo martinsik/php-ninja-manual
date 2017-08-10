@@ -1,12 +1,22 @@
 import { Action, combineReducers } from 'redux';
+import { AppState } from '../types/AppState';
 import searchListReady from './searchListReady';
 import changeSearchTerm from './changeSearchTerm';
 import autocompleteVisible from './autocompleteVisible';
-import { AppState } from '../App';
+import changeLanguage from './changeLanguage';
+import listDetailsLoaded from './listDetailsLoaded';
+import showDetail from './showDetail';
+import toggleParameter from './toggleParameter';
 
 const simpleReducers = combineReducers({
   list: searchListReady,
   searchTerm: changeSearchTerm,
+  language: changeLanguage,
+  details: listDetailsLoaded,
+  selectedItem: combineReducers({
+    name: showDetail,
+    expandedParams: toggleParameter,
+  }),
   autocompleteVisible: (val = false) => val
 });
 

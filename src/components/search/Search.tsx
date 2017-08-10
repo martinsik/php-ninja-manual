@@ -1,5 +1,5 @@
 import * as React from 'react';
-import VisibleAutocomplete from '../autocomplete/VisibleAutocomplete';
+import { VisibleAutocomplete } from '../autocomplete/VisibleAutocomplete';
 import '../../styles/search.css';
 
 export type SearchStateProps = {
@@ -14,7 +14,7 @@ export type SearchDispatchProps = {
 
 type SearchProps = SearchStateProps & SearchDispatchProps;
 
-export function Search(props: SearchProps) {
+export const Search = (props: SearchProps) => {
 
   return (
     <section className="search">
@@ -26,7 +26,7 @@ export function Search(props: SearchProps) {
           type="text"
           id="search-field"
           value={props.searchTerm}
-          onBlur={() => props.changeAutocompleteVisible(true)}
+          onBlur={() => props.changeAutocompleteVisible(false)}
           onFocus={() => props.changeAutocompleteVisible(true)}
           onChange={e => props.onChangeSearchTerm(e.target.value)}
         />
@@ -34,4 +34,4 @@ export function Search(props: SearchProps) {
       </div>
     </section>
   );
-}
+};

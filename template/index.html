@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="browser.css">
     <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="content.css">
@@ -36,16 +36,25 @@
         </section>
 
         <section class="content">
-            <p class="synopsis">
+            <div class="synopsis">
                 <span class="return-value">mixed</span>
                 <span class="name">str_replace</span> (
-                    <span class="return-value">mixed</span>
-                    <span class="var-name">$search</span> ,
-                    <span class="return-value">mixed</span>
-                    <span class="var-name">$replace</span> ,
-                    <span>mixed $subject</span>
-                    <span class="optional">[, int &$count ]</span>
-                )</p>
+                <ul>
+                    <li>
+                        <span class="return-value">mixed</span>
+                        <span class="var-name">$search</span> ,
+                    </li>
+                    <li>
+                        <span class="return-value">mixed</span>
+                        <span class="var-name">$replace</span> ,
+                    </li>
+                    <li>
+                        <span>mixed $subject</span>
+                        <span class="optional">[, int &$count ]</span>
+                    </li>
+                </ul>
+                )
+            </div>
 
             <p class="description">Replace all occurrences of the search string with the replacement string</p>
 

@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
-import { AppState } from '../../App';
-import Autocomplete from './Autocomplete';
+import { AppState } from '../../types/AppState';
+import { showDetail } from '../../actions/showDetail';
+import { changeSearchTerm } from '../../actions/changeSearchTerm';
+import { Autocomplete, AutocompleteStateProps, AutocompleteDispatchProps } from './Autocomplete';
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: AppState): AutocompleteStateProps => {
   let terms: string[] = [];
 
   const { list, searchTerm } = state;
@@ -34,15 +36,17 @@ const mapStateToProps = (state: AppState) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch): AutocompleteDispatchProps => {
   return {
-
+    onClick: (term: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+      dispatch(showDetail(term));
+      dispatch(changeSearchTerm(term));
+      e.preventDefault();
+    }
   };
 };
 
-const VisibleAutocomplete = connect(
+export const VisibleAutocomplete = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Autocomplete);
-
-export default VisibleAutocomplete;
