@@ -1,9 +1,18 @@
+import { AppState } from '../types/AppState';
 import { ShowDetailAction, SHOW_DETAIL } from '../actions/showDetail';
 
-export default (state: string = '', action: ShowDetailAction) => {
+export default (state: AppState, action: ShowDetailAction) => {
   switch (action.type) {
     case SHOW_DETAIL:
-      return action.name;
+      const stateSlice = {
+        searchTerm: action.name,
+        selectedItem: {
+          name: action.name,
+          expandedParams: []
+        }
+      };
+      return Object.assign({}, state, stateSlice);
+
     default:
       return state;
   }

@@ -6,7 +6,7 @@ export type AutocompleteStateProps = {
 };
 
 export type AutocompleteDispatchProps = {
-  onClick: (term: string, e: React.MouseEvent<HTMLAnchorElement>) => void,
+  onClick: (term: string) => void,
 };
 
 type AutocompleteProps = AutocompleteStateProps & AutocompleteDispatchProps;
@@ -16,7 +16,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <ul className="autocomplete">
       {props.terms.map((term: string, i: number) => (
         <li key={i}>
-          <a href="#" onClick={e => props.onClick(term, e)}>{term}</a>
+          <a href="#" onClick={e => { props.onClick(term); e.preventDefault(); }}>{term}</a>
         </li>
       ))}
     </ul>

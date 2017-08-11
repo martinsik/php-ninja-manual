@@ -6,6 +6,7 @@ export interface AppState {
   searchTerm: string;
   selectedItem: {
     name: string;
+    hoveredParam: string;
     expandedParams: string[];
   };
   details: { [key: string]: Detail };

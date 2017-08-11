@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { changeAutocompleteVisible, AutocompleteVisibleChangeAction } from '../actions/changeAutocompleteVisible';
 import {
   ScheduledAutocompleteVisibleChangeAction,
-  SCHEDULE_CHANGE_AUTOCOMPLETE_VISIBLE } from '../actions/scheduleChangeAutocompleteVisible';
+  SCHEDULE_CHANGE_AUTOCOMPLETE_VISIBLE
+} from '../actions/scheduleChangeAutocompleteVisible';
 
 type ActionType = ActionsObservable<ScheduledAutocompleteVisibleChangeAction>;
 type ReturnType = Observable<AutocompleteVisibleChangeAction>;

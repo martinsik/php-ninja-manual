@@ -21,10 +21,21 @@
       list-style: none;
       padding: 0;
       margin:0 ;
-      display: inline-block;
+      display: inline;
 
       li {
         display: inline-block;
+        border: 1px solid transparent;
+        padding: 2px;
+        padding-right: 5px;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &.hovered {
+          border-color: #dcdcdc;
+          background: #f7f7f7;
+        }
+
         span {
           &.var-name {
             color: #22899e;
@@ -51,13 +62,16 @@
 
     li {
       padding: 5px;
+      padding-right: 0;
       border: 1px solid #abd4f1;
-      background: #eff9ff;
       border-bottom: none;
 
-      &:hover {
-        background: #e4edff;
-        cursor: pointer;
+      &:not(.static) {
+        background: #eff9ff;
+        &:hover, &.hovered {
+          background: #e4edff;
+          cursor: pointer;
+        }
       }
 
       &:first-child {
@@ -74,17 +88,26 @@
       p {
         overflow-y: hidden;
         max-height: 0;
-        transition: max-height 0.15s linear, padding-top 0.2s linear;
+        transition: max-height 0.15s linear, padding-top 0.15s linear;
         padding-top: 0;
         margin: 0;
         font-size: 13px;
       }
 
       &.expanded {
+        padding-bottom: 0;
+
         p {
+          overflow-y: auto;
           max-height: 100px;
           padding-top: 5px;
+          padding-bottom: 5px;
         }
+      }
+
+      &.static {
+        background: #f5f5f5;
+        color: #555;
       }
 
     }

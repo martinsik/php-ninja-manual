@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { AppState } from '../../types/AppState';
 import { showDetail } from '../../actions/showDetail';
-import { changeSearchTerm } from '../../actions/changeSearchTerm';
 import { Autocomplete, AutocompleteStateProps, AutocompleteDispatchProps } from './Autocomplete';
 
 const mapStateToProps = (state: AppState): AutocompleteStateProps => {
@@ -38,11 +37,7 @@ const mapStateToProps = (state: AppState): AutocompleteStateProps => {
 
 const mapDispatchToProps = (dispatch): AutocompleteDispatchProps => {
   return {
-    onClick: (term: string, e: React.MouseEvent<HTMLAnchorElement>) => {
-      dispatch(showDetail(term));
-      dispatch(changeSearchTerm(term));
-      e.preventDefault();
-    }
+    onClick: (term: string) => dispatch(showDetail(term)),
   };
 };
 

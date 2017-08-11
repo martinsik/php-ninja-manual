@@ -7,6 +7,7 @@ import changeLanguage from './changeLanguage';
 import listDetailsLoaded from './listDetailsLoaded';
 import showDetail from './showDetail';
 import toggleParameter from './toggleParameter';
+import hoverParameter from './hoverParameter';
 
 const simpleReducers = combineReducers({
   list: searchListReady,
@@ -14,14 +15,16 @@ const simpleReducers = combineReducers({
   language: changeLanguage,
   details: listDetailsLoaded,
   selectedItem: combineReducers({
-    name: showDetail,
+    name: (val = '') => val,
     expandedParams: toggleParameter,
+    hoveredParam: hoverParameter,
   }),
   autocompleteVisible: (val = false) => val
 });
 
 const sliceReducers = [
-  autocompleteVisible
+  autocompleteVisible,
+  showDetail,
 ];
 
 function applySliceReducers(state: AppState, action: Action) {
