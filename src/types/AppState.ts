@@ -8,6 +8,7 @@ export interface AppState {
     name: string;
     hoveredParam: string;
     expandedParams: string[];
+    expandedDescription: boolean;
   };
   details: { [key: string]: Detail };
   autocompleteVisible: boolean;

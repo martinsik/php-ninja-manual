@@ -8,6 +8,7 @@ import listDetailsLoaded from './listDetailsLoaded';
 import showDetail from './showDetail';
 import toggleParameter from './toggleParameter';
 import hoverParameter from './hoverParameter';
+import toggleExpandDescription from './toggleExpandDescription';
 
 const simpleReducers = combineReducers({
   list: searchListReady,
@@ -16,8 +17,9 @@ const simpleReducers = combineReducers({
   details: listDetailsLoaded,
   selectedItem: combineReducers({
     name: (val = '') => val,
-    expandedParams: toggleParameter,
     hoveredParam: hoverParameter,
+    expandedParams: toggleParameter,
+    expandedDescription: toggleExpandDescription,
   }),
   autocompleteVisible: (val = false) => val
 });

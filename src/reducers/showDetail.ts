@@ -8,7 +8,8 @@ export default (state: AppState, action: ShowDetailAction) => {
         searchTerm: action.name,
         selectedItem: {
           name: action.name,
-          expandedParams: []
+          expandedParams: [],
+          expandedDescription: false,
         }
       };
       return Object.assign({}, state, stateSlice);
