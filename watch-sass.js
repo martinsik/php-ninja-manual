@@ -8,6 +8,7 @@ const files = {
     'template/content.scss': ['template/content.css', 'src/styles/content.css'],
     'template/font.scss': ['template/font.css', 'src/styles/font.css'],
     'template/autocomplete.scss': ['template/autocomplete.css', 'src/styles/autocomplete.css'],
+    'template/examples.scss': ['template/examples.css', 'src/styles/examples.css'],
     'template/app.scss': ['template/app.css', 'src/styles/app.css'],
     'template/_global.scss': ['template/_global.css', 'src/styles/_global.css'],
 };

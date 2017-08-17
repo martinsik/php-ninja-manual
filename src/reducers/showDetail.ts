@@ -10,7 +10,8 @@ export default (state: AppState, action: ShowDetailAction) => {
           name: action.name,
           expandedParams: [],
           expandedDescription: false,
-        }
+        },
+        selectedExample: 0,
       };
       return Object.assign({}, state, stateSlice);
 

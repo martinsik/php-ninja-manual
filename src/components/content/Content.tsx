@@ -8,6 +8,7 @@ export type ContentStateProps = {
   detail: Detail,
   name: string,
   hoveredParam: string,
+  examplesCount: number,
   expandedDescription: boolean,
   expandedParams: string[],
 };
@@ -17,6 +18,7 @@ export type ContentDispatchProps = {
   onShowDetail: (name: string) => void,
   onParameterHovered: (name?: string) => void,
   onToggleDescription: () => void,
+  onShowExamples: () => void,
 };
 
 type ContentProps = ContentStateProps & ContentDispatchProps;
@@ -92,7 +94,7 @@ export function Content(props: ContentProps) {
         }
       </div>
 
-      <ul className="parameters">
+      <ul className="list">
         {mergeParamNames.map((name: string, i: number) => {
           const param = mergedParams[name];
           const classes = classnames({
@@ -136,6 +138,12 @@ export function Content(props: ContentProps) {
             ))}
           </ul>
         </div>
+      )}
+
+      {props.examplesCount && (
+        <button className="examples" onClick={() => props.onShowExamples()}>
+          Show {props.examplesCount} example{props.examplesCount > 1 ? 's' : ''}
+        </button>
       )}
     </section>
   );

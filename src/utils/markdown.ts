@@ -2,7 +2,7 @@ import { Converter as MarkdownConverter } from 'showdown';
 
 const converter = new MarkdownConverter({
   simpleLineBreaks: true,
-} as any);
+});
 
 export function makeMarkdown(source: string) {
   // transform `\n` to real line breaks

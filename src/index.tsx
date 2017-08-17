@@ -8,6 +8,8 @@ import store from './createStore';
 import { ContainerApp } from './components/app/ContainerApp';
 import { changeLanguage } from './actions/changeLanguage';
 import { showDetail } from './actions/showDetail';
+import { changeView } from './actions/changeView';
+import { View } from './types/AppState';
 
 import './styles/_global.css';
 
@@ -29,6 +31,7 @@ ReactDOM.render(
         unsubscribe();
 
         store.dispatch(showDetail('str_replace'));
+        store.dispatch(changeView(View.Examples));
       }
     });
   }

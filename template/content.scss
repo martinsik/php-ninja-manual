@@ -78,47 +78,16 @@
     }
   }
 
-  .parameters {
-    list-style: none;
-    padding: 0;
-
+  .list {
     li {
-      padding: 5px;
-      padding-right: 0;
-      border: 1px solid #abd4f1;
-
-      &:not(.inactive) {
-        background: #eff9ff;
-        &:hover, &.hovered {
-          background: #e4edff;
-          cursor: pointer;
-        }
-      }
-
-      &:not(:first-child) {
-        border-top: none;
-      }
-
-      &:first-child {
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
-
-      &:last-child {
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-        border-bottom: 1px solid #98c9ec;
-      }
-
       & > p {
         overflow-y: hidden;
         max-height: 0;
-        transition: max-height 0.15s linear, padding-top 0.15s linear, margin-top 0.15s linear;
         padding-top: 0;
         margin: 0;
-        font-size: 13px;
 
         & > p {
+          font-size: 13px;
           margin: 0;
         }
       }
@@ -153,5 +122,9 @@
         display: inline;
       }
     }
+  }
+
+  .examples {
+    margin-top: 15px;
   }
 }

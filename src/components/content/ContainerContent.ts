@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { AppState } from '../../types/AppState';
+import { AppState, View } from '../../types/AppState';
 import { Content, ContentStateProps, ContentDispatchProps } from './Content';
 import { expandParameter } from '../../actions/toggleParameter';
 import { showDetail } from '../../actions/showDetail';
 import { hoverParameter } from '../../actions/hoverParameter';
 import { toggleExpandDescription } from '../../actions/toggleExpandDescription';
+import { changeView } from '../../actions/changeView';
 
 const mapStateToProps = (state: AppState): ContentStateProps => {
   const name = state.selectedItem.name;
@@ -12,6 +13,7 @@ const mapStateToProps = (state: AppState): ContentStateProps => {
   const detail = state.details[name];
   const hoveredParam = state.selectedItem.hoveredParam;
   const expandedDescription = state.selectedItem.expandedDescription;
+  const examplesCount = state.examples[name] ? state.examples[name].length : 0;
 
   return {
     detail,
@@ -19,6 +21,7 @@ const mapStateToProps = (state: AppState): ContentStateProps => {
     expandedParams,
     hoveredParam,
     expandedDescription,
+    examplesCount,
   };
 };
 
@@ -28,6 +31,7 @@ const mapDispatchToProps = (dispatch): ContentDispatchProps => {
     onShowDetail: (name: string) => dispatch(showDetail(name)),
     onParameterHovered: (name?: string) => dispatch(hoverParameter(name ? name : null)),
     onToggleDescription: () => dispatch(toggleExpandDescription()),
+    onShowExamples: () => dispatch(changeView(View.Examples)),
   };
 };
 

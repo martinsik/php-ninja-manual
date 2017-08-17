@@ -9,12 +9,18 @@ import showDetail from './showDetail';
 import toggleParameter from './toggleParameter';
 import hoverParameter from './hoverParameter';
 import toggleExpandDescription from './toggleExpandDescription';
+import examplesLoaded from './examplesLoaded';
+import changeView from './changeView';
+import selectExample from './selectExample';
 
 const simpleReducers = combineReducers({
   list: searchListReady,
   searchTerm: changeSearchTerm,
   language: changeLanguage,
   details: listDetailsLoaded,
+  examples: examplesLoaded,
+  view: changeView,
+  selectedExample: selectExample,
   selectedItem: combineReducers({
     name: (val = '') => val,
     hoveredParam: hoverParameter,
