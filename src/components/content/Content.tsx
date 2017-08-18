@@ -25,8 +25,9 @@ type ContentProps = ContentStateProps & ContentDispatchProps;
 
 export function Content(props: ContentProps) {
   const { detail, hoveredParam, expandedParams } = props;
-
   const mergedParams: { [key: string]: Param } = {};
+
+  // console.log(detail);
 
   detail.params.forEach((group: ParamGroup) => {
     const keys = Object.keys(mergedParams);
@@ -37,11 +38,9 @@ export function Content(props: ContentProps) {
     });
   });
 
+  const mergeParamNames = Object.keys(mergedParams);
   const forceLongDescription = detail.long_desc.length < 100;
   let description = forceLongDescription || props.expandedDescription ? detail.long_desc : detail.desc;
-
-  const mergeParamNames = Object.keys(mergedParams);
-  // console.log(detail);
 
   return (
     <section className="content">
@@ -99,7 +98,7 @@ export function Content(props: ContentProps) {
           const param = mergedParams[name];
           const classes = classnames({
             hovered: hoveredParam === param.var,
-            expanded: expandedParams.indexOf(name) !== -1,
+            active: expandedParams.indexOf(name) !== -1,
           });
           const content = ([
             <span key={1}>{param.type} {param.var}</span>,
@@ -140,11 +139,11 @@ export function Content(props: ContentProps) {
         </div>
       )}
 
-      {props.examplesCount && (
+      {props.examplesCount > 0 ? (
         <button className="examples" onClick={() => props.onShowExamples()}>
           Show {props.examplesCount} example{props.examplesCount > 1 ? 's' : ''}
         </button>
-      )}
+      ) : ''}
     </section>
   );
 }

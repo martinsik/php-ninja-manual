@@ -1,10 +1,11 @@
-import { AppState } from '../types/AppState';
+import { AppState, View } from '../types/AppState';
 import { ShowDetailAction, SHOW_DETAIL } from '../actions/showDetail';
 
 export default (state: AppState, action: ShowDetailAction) => {
   switch (action.type) {
     case SHOW_DETAIL:
       const stateSlice = {
+        view: View.Detail,
         searchTerm: action.name,
         selectedItem: {
           name: action.name,

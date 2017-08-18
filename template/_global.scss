@@ -32,7 +32,7 @@ ul.list {
 
     &:not(.inactive) {
       background: #eff9ff;
-      &:hover, &.hovered {
+      &:hover, &.hovered, &.active {
         background: #e4edff;
         cursor: pointer;
       }

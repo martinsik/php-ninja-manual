@@ -13,23 +13,38 @@ export class Editor extends React.Component<EditorStateProps, AppState> {
   private defaultSource: string;
 
   componentDidMount() {
-    console.log('componentDidMount');
-    this.editor = ace.edit('example-editor');
-    this.editor.setValue('<?php\n' + this.defaultSource);
-    this.editor.session.setMode('ace/mode/php');
+    const editor = ace.edit('example-editor');
+    editor.session.setMode('ace/mode/php');
+    editor.setFontSize('15px');
+    editor.$blockScrolling = Infinity;
+    // We need to set the font family and size also here to match CSS.
+    editor.setOptions({
+      fontFamily: 'Inconsolata',
+    });
+    this.editor = editor;
+
+    this.setEditorSource(this.defaultSource);
   }
 
   componentWillUnmount() {
     this.editor.destroy();
-    console.log('componentWillUnmount');
   }
 
   render() {
     this.defaultSource = this.props.example.source;
+    if (this.editor) {
+      this.setEditorSource(this.props.example.source);
+    }
 
     return (
       <div id="example-editor" />
     );
+  }
+
+  private setEditorSource(source: string) {
+    const phpSource = '<?php\n' + source;
+    this.editor.setValue(phpSource);
+    this.editor.clearSelection();
   }
 
 }

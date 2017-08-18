@@ -19,11 +19,19 @@ type ExamplesProps = ExamplesStateProps & ExamplesDispatchProps;
 export function Examples(props: ExamplesProps) {
   return (
     <section className="examples">
+      <p>{props.selectedExample + 1}. {props.examples[props.selectedExample].title}</p>
+
       <Editor example={props.examples[props.selectedExample]} />
 
       <ul className="list">
         {props.examples.map((example: Example, i: number) => (
-            <li key={i} onClick={() => props.onSelectExample(i)}>{i + 1}. {example.title}</li>
+            <li
+              key={i}
+              onClick={() => props.onSelectExample(i)}
+              className={props.selectedExample === i ? 'active' : ''}
+            >
+              {i + 1}. {example.title}
+            </li>
         ))}
       </ul>
 
